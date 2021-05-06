@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cont
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Создаём все необходимые переменные
+            int count = 0;
+            int sum = 0;
+            int sum1 = 0;
+            int[,] mas = new int[8, 8];
+            int[] s = new int[8];
+            Random rand = new Random();
+            for (int i = 0; i < mas.GetLength(0); i++)
+            {
+                for (int j = 0; j < mas.GetLength(1); j++)
+                {
+                    mas[i, j] = rand.Next(56, 99);
+                    if (i == j) sum += mas[i, j]; // Находим сумму главной диагонали матрицы
+                    Console.Write(mas[i, j] + " ");
+                }
+                Console.Write("\n\r");
+            }
+            Console.WriteLine("Сумма главной диагонали: " + sum); // Выводим результат
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    sum1 += mas[i, j];       //находим сумму всех элементов строки
+                }
+                Console.WriteLine();
+                Console.WriteLine("Сумма " + (i + 1) + " строки равна " + sum1);     //выводим сумму строки
+                if (sum1 > sum)
+                {
+                    count++;
+                }
+                sum1 = 0;    //обнуляем полученную сумму
+            }
+            {
+                int i, j, temp;
+                for (j = 0; j < 8; j++) // Заменяем первую и последнюю строку в матрице
+                {
+                    temp = mas[0, j];
+                    mas[0, j] = mas[8 - 1, j];
+                    mas[8 - 1, j] = temp;
+                }
+                Console.WriteLine("Матрица после замены строк:");
+                // Выводим полученную матрицу
+                for (i = 0; i < 8; i++)
+                {
+                    for (j = 0; j < 8; j++)
+                    {
+                        Console.Write("{0} ", mas[i, j]);
+                    }
+                    Console.WriteLine();
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
