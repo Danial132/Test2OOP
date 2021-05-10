@@ -10,14 +10,14 @@ namespace mk2OOP
     {
         static void Main(string[] args)
         {
-            int[] array = new int[5]; // Створюємо масив
-            Random rand = new Random(); // Функція рандому
+            int[] array = new int[5];
+            Random rand = new Random();
             for (int i = 0; i < array.Length; i++)
-                array[i] = rand.Next(5, 120); // Діапазон випадкових значень
-            int minValue = array.Min(); // Знаходження мінімального значення
-            int maxValue = array.Max(); // Знаходження максимального значення
-            int midValue = array.Sum()/array.Length; // Пошук середнього значення
-            var Average = array.OrderBy(v => Math.Abs((long)v - midValue)).First(); // Пошук найближчого значення до середнього значення
+                array[i] = rand.Next(5, 120); 
+            int minValue = array.Min(); 
+            int maxValue = array.Max(); 
+            int midValue = array.Sum()/array.Length; 
+            var Average = array.OrderBy(v => Math.Abs((long)v - midValue)).First();
             Console.WriteLine("Average:");
             Console.WriteLine(string.Join(",", Average));
             Console.WriteLine("MaxValue");
